@@ -5,7 +5,7 @@
 
         Department: 
       <select [(ngModel)]="filterDepartment" placeholder="Filter Department"  required name="department_id">
-        <option value="" disabled selected>Select Department</option>
+        <option value="" selected>All Departments</option>
         <option *ngFor="let departments of data.departments|async" value="{{departments.department_id}}">
             {{departments.name}}
         </option>
