@@ -84,7 +84,7 @@ export class Validation {
 
     return true;
   }
-  
+  /*
   checkBankAccountNum(passedAccountNum: string): boolean 
   {
 
@@ -96,7 +96,7 @@ export class Validation {
     
     return true;
 
-  }
+  }*/
 
   checkNegativeNum(passedNum: number)
   {
