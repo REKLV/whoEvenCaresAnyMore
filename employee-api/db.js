@@ -3,7 +3,7 @@ const mysql = require('mysql');
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'bob',
-    password: 'password',
+    password: 'bob~Pwd!',
     database: 'employee_db'
 })
 
@@ -30,6 +30,44 @@ exports.insertEmployee = function(data, readyFn) {
         readyFn(results.insertId);
     });
 }
+
+// exports.getEmployeesByDepartment = function(callback) {
+//     db.query("SELECT employee_id, first_name, middle_name, last_name, address_line, post_code, email, nin, bank_sort_code, bank_account_no, salary, department_id FROM employee where department_id=  '1'" , 
+//         function (err, rows) {
+//             if (err) throw err;
+//             callback(rows);
+//         }
+//     )
+// }
+
+
+exports.getEmployeesByDepartment = function(depId, callback) {
+   var q= db.query(" select employee_id, first_name, middle_name, last_name, address_line, post_code, email, nin, bank_sort_code, bank_account_no, salary, department_id FROM employee WHERE department_id = ?", [depId], 
+  
+   function (err, rows) {
+    console.log(JSON.stringify(depId));
+    console.log(q.sql)
+    
+    if (err) throw err;
+    callback(rows);
+    }
+    )
+   }
+
+
+// exports.getEmployeesByDepartment = function(data,results ,readyFn) {
+//     var query = db.query('SELECT employee_id, first_name, middle_name, last_name, address_line, post_code, email, nin, bank_sort_code, bank_account_no, salary, department_id FROM employee WHERE department_id= '+ '1 ', 
+//     data, function(error, rows ) {
+//         if (error) throw error;
+//         readyFn(results.insertId);
+//         data(rows)
+
+        
+//     });
+// }
+
+
+
 
 // exports.getUserById = function(userId, callback) {
 //     db.query("SELECT id, email, name FROM users WHERE id = ?", [userId], 
