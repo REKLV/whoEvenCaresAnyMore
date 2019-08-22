@@ -4,7 +4,7 @@ import { SwitchboardService } from '../switchboard.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'city-detail',
+  selector: 'employee-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.css']
 })
@@ -21,7 +21,7 @@ export class DetailComponent implements OnInit, OnDestroy {
   subEmployee: Subscription;
 
   ngOnInit(): void {
-    this.subEmployee = this.switchboard.city$.subscribe((e) => {
+    this.subEmployee = this.switchboard.employee$.subscribe((e) => {
         this.employee = e;
     });
   }
