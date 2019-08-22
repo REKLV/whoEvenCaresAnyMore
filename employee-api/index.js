@@ -17,6 +17,13 @@ var authMiddleware = function (req, res, next) {
 
 // app.use(authMiddleware);
 
+app.get('/employees', function(req, res) {
+    db.getEmployees(function(rows) {
+        console.log('dsfdsf');
+        res.send(rows);
+    })
+});
+
 // function updateCities(citiesReadyFn) {
 //     db.getCitiesInCountry('GBR', function(rows) {
 //         cities = rows;
