@@ -2,8 +2,8 @@ const mysql = require('mysql');
 
 const db = mysql.createConnection({
     host: 'localhost',
-    user: '',
-    password: '',
+    user: 'bob',
+    password: 'password',
     database: 'employee_db'
 })
 
@@ -15,14 +15,14 @@ db.connect(function(err) {
     console.log('Connected to mysql');
 })
 
-// exports.getCitiesInCountry = function(countrycode, callback) {
-//     db.query("SELECT id, name, countrycode, district, population FROM city WHERE countrycode = ?", [countrycode], 
-//         function (err, rows) {
-//             if (err) throw err;
-//             callback(rows);
-//         }
-//     )
-// }
+exports.getEmployees = function(callback) {
+    db.query("SELECT employee_id, first_name, middle_name, last_name, address_line, post_code, email, nin, bank_sort_code, bank_account_no, salary, department_id FROM employee", 
+        function (err, rows) {
+            if (err) throw err;
+            callback(rows);
+        }
+    )
+}
 
 // exports.getUserById = function(userId, callback) {
 //     db.query("SELECT id, email, name FROM users WHERE id = ?", [userId], 
