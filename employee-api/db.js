@@ -27,15 +27,52 @@ exports.getEmployees = function(callback) {
 
 exports.insertEmployee = function(data, readyFn) {
     console.log(data.post_code);
+    var valid = 1;
+
+if (/([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})/.test(data.post_code)){
     
-    if (/([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})/.test(data.post_code)){
+} else {
+    valid = 0;  
+    console.log("Invalid uk postcode")
+}
+
+if (/^[A-CEGHJ-PR-TW-Z]{1}[A-CEGHJ-NPR-TW-Z]{1}[0-9]{6}[A-DFM]{0,1}$/.test(data.nin)){
+    
+}else{
+    valid = 0;  
+    console.log("Invalid uk NIN");
+}
+
+if (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(data.email)){
+    
+} else {
+    console.log("Invalid email");
+    valid = 0;
+}
+if(/^[0-9]{6,6}$/.test(data.bank_sort_code)){
+
+} else {
+    console.log("Invalid sort code");
+    valid = 0;
+}
+
+if(/^[0-9]{8,8}$/.test(data.bank_account_no)){
+
+} else {
+    console.log("Invalid bank account no");
+    valid = 0;
+}
+
+
+if(valid==1){
     var query = db.query('INSERT INTO employee SET ? ', data, function(error, results, fields) {
         if (error) throw error;
         readyFn(results.insertId);
     });
-} else {
-    console.log("Invalid uk postcode")
 }
+
+
+
 }
 
 exports.getAllDepartments = function(callback) {
