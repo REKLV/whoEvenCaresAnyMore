@@ -1,0 +1,15 @@
+<div *ngIf="department" class="card">
+    <h5 class="card-header">{{ department.name }}</h5>
+    <div class="card-body">
+        <div class="card-text">
+        
+            <ul>
+                <li *ngFor="let employee of employees">
+                    {{ employee.first_name }}
+                </li>
+            </ul>
+        
+        </div>
+    </div>
+</div>
+    

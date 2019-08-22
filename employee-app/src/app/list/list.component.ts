@@ -24,7 +24,7 @@ export class ListComponent implements OnInit {
 
   onSelect (newEmployee: Employee): void {
     this.thisEmployee = newEmployee;
-    this.switchboard.switchCity(this.thisEmployee);
+    this.switchboard.switchEmployee(this.thisEmployee);
   }
 
 
