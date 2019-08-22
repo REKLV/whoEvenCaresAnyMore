@@ -2,7 +2,7 @@
     <h2>Departments</h2>
   
     <ul>
-        <li *ngFor="let department of data.departments" (click)="onSelect(department)">
+        <li *ngFor="let department of data.departments|async" (click)="onSelect(department)">
           {{ department.name }}
         </li>
     </ul>
