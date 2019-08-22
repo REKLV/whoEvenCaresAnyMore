@@ -8,7 +8,7 @@ import {Employee} from "./employee";
 export class SwitchboardService {
 
   private employeeWatcher = new Subject<Employee>();
-  public city$ = this.employeeWatcher.asObservable();
+  public employee$ = this.employeeWatcher.asObservable();
 
   constructor() { }
 
