@@ -10,9 +10,8 @@ import { Validations } from './validations';
 })
 export class AddEmployeeComponent implements OnInit {
 
-  validation: Validations;
   validName: boolean = false;
-  validMiddleName: boolean = true;
+  validMiddleName: boolean = false;
   validSurname: boolean = false;
   validAddress: boolean = false;
   validPostCode: boolean = false;
@@ -21,7 +20,19 @@ export class AddEmployeeComponent implements OnInit {
   validSortCode: boolean = false;
   validAccountNum: boolean = false;
   validSalary: boolean = false;
-  messages: string[] 
+  checkIfAllValid: boolean = false;
+
+  checkIfAllFlagsAreValid():boolean
+  {
+    if(!this.validName ||  !this.validSurname || !this.validAddress || !this.validPostCode || !this.validEmail  || !this.validNan 
+      || !this.validSortCode || !this.validAccountNum || !this.validSalary )
+    {
+      this.checkIfAllValid = false;
+      return false;
+    }
+    this.checkIfAllValid = true;
+    return true;
+  }
 
   checkName (name: string, type:string):boolean
   {
@@ -39,12 +50,11 @@ export class AddEmployeeComponent implements OnInit {
       {
         this.validMiddleName = false;
       }
-      else
+      else if(type == "lname")
       {
         this.validSurname = false;
       }
-      console.log("The name is worng")
-      this.validName = false;
+      this.checkIfAllFlagsAreValid();
       return false;
     }
 
@@ -56,25 +66,26 @@ export class AddEmployeeComponent implements OnInit {
     {
       this.validMiddleName = true;
     }
-    else
+    else if (type= "lname")
     {
       this.validSurname = true;
     }
 
-    this.validName = true;
-    console.log("The tname is correct");
+    this.checkIfAllFlagsAreValid();
     return true;
   }
 
   checkAddress(addressLine: string): boolean 
   {
 
-    if(typeof addressLine != "string" || addressLine == null || addressLine == "" || addressLine.length > 128 )
+    if(typeof addressLine != "string" || addressLine == null || addressLine == "" || addressLine.length > 128 || addressLine.length < 10 )
     {
       this.validAddress = false;
+      this.checkIfAllFlagsAreValid();
       return false;
     }
     this.validAddress = true;
+    this.checkIfAllFlagsAreValid();
     return true;
   }
 
@@ -86,10 +97,12 @@ export class AddEmployeeComponent implements OnInit {
     if(typeof passedPostCode != "string" || regexPostCode.test(passedPostCode) == false)
     {
       this.validPostCode = false;
+      this.checkIfAllFlagsAreValid();
       return false;
     }
 
     this.validPostCode = true;
+    this.checkIfAllFlagsAreValid();
     return true;
   }
 
@@ -103,9 +116,11 @@ export class AddEmployeeComponent implements OnInit {
     if(typeof passedEmail != "string" || passedEmail == null || this.checkIfContainsOnlyNum(passedEmail) == true ||  regexEmail.test(passedEmail) == false)
     {
       this.validEmail = false;
+      this.checkIfAllFlagsAreValid();
       return false;
     }
     this.validEmail = true;
+    this.checkIfAllFlagsAreValid();
     return true;
   }
 
@@ -118,9 +133,11 @@ export class AddEmployeeComponent implements OnInit {
     if(typeof passedNan != "string" || regexNan.test(passedNan) == false)
     {
       this.validNan = false;
+      this.checkIfAllFlagsAreValid();
       return false;
     }
     this.validNan = true;
+    this.checkIfAllFlagsAreValid();
     return true;
   }
 
@@ -130,9 +147,11 @@ export class AddEmployeeComponent implements OnInit {
     if(typeof passedSortCode != "string" || passedSortCode == null || this.checkIfContainsOnlyNum(passedSortCode) == false || passedSortCode.length != 6 )
     {
       this.validSortCode = false;
+      this.checkIfAllFlagsAreValid();
       return false; 
     }
     this.validSortCode = true;
+    this.checkIfAllFlagsAreValid();
     return true;
   }
   
@@ -143,9 +162,11 @@ export class AddEmployeeComponent implements OnInit {
     if(typeof passedAccountNum != "string" || passedAccountNum == null || this.checkIfContainsOnlyNum(passedAccountNum) == false || passedAccountNum.length != 8)
     {
       this.validAccountNum = false;
+      this.checkIfAllFlagsAreValid();
       return false
     }
     this.validAccountNum = true;
+    this.checkIfAllFlagsAreValid();
     return true;
 
   }
@@ -156,7 +177,7 @@ export class AddEmployeeComponent implements OnInit {
     {
       return false;
     }
-
+    this.checkIfAllFlagsAreValid();
     return true;
   }
   
@@ -169,9 +190,11 @@ export class AddEmployeeComponent implements OnInit {
     if(typeof passedSalaryNum != "number" || passedSalaryNum == null || this.checkNegativeNum(passedSalaryNum ) == false)
     {
       this.validSalary = false;
+      this.checkIfAllFlagsAreValid();
       return false; 
     }
     this.validSalary = true;
+    this.checkIfAllFlagsAreValid();
     return true;
   }
 
@@ -194,7 +217,7 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   addEmployee(addForm): void {
-    if (addForm.valid) {
+    if (addForm.valid && this.checkIfAllFlagsAreValid()) {
       var employeeToAdd = this.newEmployee;
       this.newEmployee = new Employee();
 

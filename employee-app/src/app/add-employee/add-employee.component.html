@@ -31,7 +31,7 @@
         </select> </div>
 
 
-        <input type="submit" [disabled]="!addForm.valid"/>
+        <input type="submit" [disabled]="!addForm.valid || checkIfAllValid"/>
 
         <div *ngIf="addForm.hasError('required', 'first_name')">First name is required</div>
         <div *ngIf="addForm.hasError('required', 'last_name')">Last name is required</div>
