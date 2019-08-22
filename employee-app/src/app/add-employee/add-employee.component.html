@@ -2,23 +2,34 @@
 
     <fieldset>
         <legend>Add Employee</legend>
-        <p *ngif="">Please fix the name</p>
-        <div> <input (blur)="checkFirstName(newEmployee.first_name)" [(ngModel)]="newEmployee.first_name" required name="first_name" placeholder="First name"/> </div>
-        <div> <input [(ngModel)]="newEmployee.middle_name" name="middle_name" placeholder="Middle name"/> </div>
-        <div> <input [(ngModel)]="newEmployee.last_name" required name="last_name" placeholder="Last name"/> </div>
-        <div> <input [(ngModel)]="newEmployee.address_line" required name="address_line" placeholder="Address Line"/> </div>
-        <div> <input [(ngModel)]="newEmployee.post_code" required name="postcode" placeholder="Postcode"/> </div>
-        <div> <input [(ngModel)]="newEmployee.email" required name="email" placeholder="Email"/> </div>
-        <div> <input [(ngModel)]="newEmployee.nin" required name="nin" placeholder="National Insurance Number"/> </div>
-        <div> <input [(ngModel)]="newEmployee.bank_sort_code" required name="bank_sort_code" placeholder="Bank Sort Code"/> </div>
-        <div> <input [(ngModel)]="newEmployee.bank_account_no" required name="bank_account_no" placeholder="Bank Account Number"/> </div>
-        <div> <input [(ngModel)]="newEmployee.salary" required name="salary" type="number" placeholder="Salary"/> </div>
+        <p *ngIf="!validName" class="red">Please make sure that the name is correct</p>
+        <div> <input (blur)="checkName($event.target.value, 'fname')" [(ngModel)]="newEmployee.first_name" required name="first_name" placeholder="First name"/> </div>
+        <p *ngIf="!validMiddleName" class="red">Please make sure that the middle-name is correct</p>
+        <div> <input (blur)="checkName($event.target.value, 'mname')" [(ngModel)]="newEmployee.middle_name" name="middle_name" placeholder="Middle name"/> </div>
+        <p *ngIf="!validSurname" class="red">Please make sure that the last name is correct</p>
+        <div> <input (blur)="checkName($event.target.value, 'lname')" [(ngModel)]="newEmployee.last_name" required name="last_name" placeholder="Last name"/> </div>
+        <p *ngIf="!validAddress" class="red">Please make sure that the address is correct</p>
+        <div> <input (blur)="checkAddress($event.target.value)" [(ngModel)]="newEmployee.address_line" required name="address_line" placeholder="Address Line"/> </div>
+        <p *ngIf="!validPostCode" class="red">Please make sure that the postcode is correct</p>
+        <div> <input (blur)="checkPostCode($event.target.value)" [(ngModel)]="newEmployee.post_code" required name="postcode" placeholder="Postcode"/> </div>
+        <p *ngIf="!validEmail" class="red">Please make sure that the email is correct</p>
+        <div> <input (blur)="checkEmail($event.target.value)" [(ngModel)]="newEmployee.email" required name="email" placeholder="Email"/> </div>
+        <p *ngIf="!validNan" class="red">Please make sure that the National Inssurence Number is correct</p>
+        <div> <input (blur)="checkNan($event.target.value)" [(ngModel)]="newEmployee.nin" required name="nin" placeholder="National Insurance Number"/> </div>
+        <p *ngIf="!validSortCode" class="red">Please make sure that the sort code is correct</p>
+        <div> <input (blur)="checkBankSortCode($event.target.value)" [(ngModel)]="newEmployee.bank_sort_code" required name="bank_sort_code" placeholder="Bank Sort Code"/> </div>
+        <p *ngIf="!validAccountNum" class="red">Please make sure that the account number is correct</p>
+        <div> <input (blur)="checkBankAccountNum($event.target.value)" [(ngModel)]="newEmployee.bank_account_no" required name="bank_account_no" placeholder="Bank Account Number"/> </div>
+        <p *ngIf="!validSalary" class="red">Please make sure that the salary is correct</p>
+        <div> <input (blur)="checkSalary($event.target.value)" [(ngModel)]="newEmployee.salary" required name="salary" type="number" placeholder="Salary"/> </div>
+        
         <div> <select [(ngModel)]="newEmployee.department_id" required name="department_id">
             <option value="-1">Select Department</option>
             <option *ngFor="let departments of data.departments|async" value="{{departments.department_id}}">
                 {{departments.name}}
             </option>
         </select> </div>
+
 
         <input type="submit" [disabled]="!addForm.valid"/>
 

@@ -3,24 +3,43 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AddEmployeeComponent } from './add-employee.component';
 import { Validations } from './validations';
 
-validation: Validations;
+
+export class AddEmployeeComponent {
+
+  validName: boolean = false;
+  checkName (name: string):boolean
+  {
+    name = this.removeEmptySpace(name);
+
+    if(typeof name != "string" || name != null || name == "" || name.length > 128 || this.checkIfContainsOnlyNum(name) == false || name.length < 3)
+    {
+      return false;
+    }
+
+    this.validName = true;
+    return true;
+
+  }
+
+  removeEmptySpace(passedStirng: string): string
+  {
+    return passedStirng.replace(/\s/g, "");
+  }
+
+  checkIfContainsOnlyNum(passedString: string): boolean
+  {
+    return passedString.match(/^[0-9]+$/) != null;
+  }
+
+
+  
+}
+
 
 describe('AddEmployeeComponent', () => {
   let component: AddEmployeeComponent;
   let fixture: ComponentFixture<AddEmployeeComponent>;
 
-  function checkFirstName(name)
-  {
-    console.log("the passed names is : " + name);
-    if(this.validation.checkFirstName(name))
-    {
-      console.log("this is okk");
-    }
-    else
-    {
-      console.log("this is not okk");
-    }
-  }
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
