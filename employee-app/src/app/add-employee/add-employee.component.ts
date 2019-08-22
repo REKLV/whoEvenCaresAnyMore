@@ -12,7 +12,7 @@ export class AddEmployeeComponent implements OnInit {
 
   validation: Validations;
   validName: boolean = false;
-  validMiddleName: boolean = false;
+  validMiddleName: boolean = true;
   validSurname: boolean = false;
   validAddress: boolean = false;
   validPostCode: boolean = false;
@@ -21,7 +21,7 @@ export class AddEmployeeComponent implements OnInit {
   validSortCode: boolean = false;
   validAccountNum: boolean = false;
   validSalary: boolean = false;
-
+  messages: string[] 
 
   checkName (name: string, type:string):boolean
   {
@@ -69,7 +69,7 @@ export class AddEmployeeComponent implements OnInit {
   checkAddress(addressLine: string): boolean 
   {
 
-    if(typeof addressLine != "string" || addressLine == null || addressLine == "" || addressLine.length > 128 || addressLine.length < 10 )
+    if(typeof addressLine != "string" || addressLine == null || addressLine == "" || addressLine.length > 128 )
     {
       this.validAddress = false;
       return false;
