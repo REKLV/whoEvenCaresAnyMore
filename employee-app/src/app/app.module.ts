@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from  '@ng-bootstrap/ng-bootstrap';
 import { DistrictDirective } from './district.directive';
 import { HttpClientModule } from '@angular/common/http';
-// import { AddEmployeeComponent } from './add-employee/add-employee.component';
+import { AddEmployeeComponent } from './add-employee/add-employee.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     NameFilterPipe,
     // AddCityComponent,
     DistrictDirective,
-    // AddEmployeeComponent
+    AddEmployeeComponent
   ],
   imports: [
     BrowserModule,

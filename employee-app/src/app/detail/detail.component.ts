@@ -21,9 +21,9 @@ export class DetailComponent implements OnInit, OnDestroy {
   subEmployee: Subscription;
 
   ngOnInit(): void {
-    // this.subEmployee = this.switchboard.employee$.subscribe((e) => {
-    //     this.employee = e;
-    // });
+    this.subEmployee = this.switchboard.employee$.subscribe((e) => {
+         this.employee = e;
+    });
   }
 
   ngOnDestroy(): void {

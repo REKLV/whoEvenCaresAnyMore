@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Employee } from './employee';
 import { HttpClient } from '@angular/common/http';
+import { Department } from './department';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,9 @@ export class DataService {
   }
 
   employees = this.http.get<Employee[]>('/api/employees');
+  departments = this.http.get<Department[]>('/api/departments');
 
-  public addCity(newEmployee: Employee): void {
-    this.http.post<Employee[]>('/api/addcity', newEmployee).subscribe();
+  public addEmployee(newEmployee: Employee): void {
+    this.http.post<Employee[]>('/api/addemployee', newEmployee).subscribe();
   }
 }

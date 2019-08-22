@@ -4,7 +4,7 @@
         <legend>Add Employee</legend>
 
         <div> <input [(ngModel)]="newEmployee.first_name" required name="first_name" placeholder="First name"/> </div>
-        <div> <input [(ngModel)]="newEmployee.middle_name" placeholder="Middle name"/> </div>
+        <div> <input [(ngModel)]="newEmployee.middle_name" name="middle_name" placeholder="Middle name"/> </div>
         <div> <input [(ngModel)]="newEmployee.last_name" required name="last_name" placeholder="Last name"/> </div>
         <div> <input [(ngModel)]="newEmployee.address_line" required name="address_line" placeholder="Address Line"/> </div>
         <div> <input [(ngModel)]="newEmployee.post_code" required name="postcode" placeholder="Postcode"/> </div>
@@ -12,11 +12,18 @@
         <div> <input [(ngModel)]="newEmployee.nin" required name="nin" placeholder="National Insurance Number"/> </div>
         <div> <input [(ngModel)]="newEmployee.bank_sort_code" required name="bank_sort_code" placeholder="Bank Sort Code"/> </div>
         <div> <input [(ngModel)]="newEmployee.salary" required name="salary" type="number" placeholder="Salary"/> </div>
-        <div> <select [(ngModel)]="newEmployee.department_id" required name="department_id" placeholder="Department_Id"/>
-            <option value="finance">Finance</option>
-            <option value="sales">Sales</option>
-            <option value="hr">HR</option>
-        </div>
+        <div> <select (change)="($event.target.value)">
+            <option value="0">Select Department</option>
+            <option *ngFor="let departments of data.departments|async" value="{{summary}}">
+                {{departments.name}}
+            </option>
+        </select> </div>
+        <!-- <div> <select [(ngModel)]="newEmployee.department_id" required name="department_id" placeholder="Department_Id">
+            <option [ngValue]="1" selected="selected" value="finance">Finance</option>
+            <option [ngValue]="2" value="sales">Sales</option>
+            <option [ngValue]="3" value="hr">HR</option>
+            </select>
+        </div> -->
 
         <input type="submit" [disabled]="!addForm.valid"/>
 
@@ -27,7 +34,7 @@
         <div *ngIf="addForm.hasError('required', 'email')">Email Address is required</div>
         <div *ngIf="addForm.hasError('required', 'nin')">National Insurance Number is required</div>
         <div *ngIf="addForm.hasError('required', 'bank_sort_code')">Bank Sort Code is required</div>
-        <div *ngIf="addForm.hasError('required', 'salary')">Salary is required</div>d
+        <div *ngIf="addForm.hasError('required', 'salary')">Salary is required</div>
      <!--   <div *ngIf="addForm.hasError('required', 'department_id')">Department is required</div> -->
 
     </fieldset>
