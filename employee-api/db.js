@@ -26,10 +26,16 @@ exports.getEmployees = function(callback) {
 }
 
 exports.insertEmployee = function(data, readyFn) {
+    console.log(data.post_code);
+    
+    if (/([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})/.test(data.post_code)){
     var query = db.query('INSERT INTO employee SET ? ', data, function(error, results, fields) {
         if (error) throw error;
         readyFn(results.insertId);
     });
+} else {
+    console.log("Invalid uk postcode")
+}
 }
 
 exports.getAllDepartments = function(callback) {
@@ -61,8 +67,9 @@ exports.getDepartmentbyID = function(id, callback) {
 
 
 exports.getEmployeesByDepartment = function(depId, callback) {
-   var q= db.query(" select employee_id, first_name, middle_name, last_name, address_line, post_code, email, nin, bank_sort_code, bank_account_no, salary, department_id FROM employee WHERE department_id = ?", [depId], 
-  
+   //var q= db.query(" select employee_id, first_name, middle_name, last_name, address_line, post_code, email, nin, bank_sort_code, bank_account_no, salary, department_id FROM employee WHERE department_id = ?", [depId], 
+   var q= db.query("select employee_id, first_name, middle_name, last_name, address_line, post_code, email, nin, bank_sort_code, bank_account_no, salary, employee.department_id, department.name FROM employee inner join department on employee.department_id=department.department_id WHERE employee.department_id = ? ", [depId], 
+
    function (err, rows) {
     console.log(JSON.stringify(depId));
     console.log(q.sql)

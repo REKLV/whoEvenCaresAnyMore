@@ -1,9 +1,24 @@
 <div class="list">
     <h2>List</h2>
   
-    <input [(ngModel)]="filterText" placeholder="Filter"/>
+    <input [(ngModel)]="filterText" class="margin-right-10" placeholder="Filter Name"/>
+
+        Department: 
+      <select [(ngModel)]="filterDepartment" placeholder="Filter Department"  required name="department_id">
+        <option value="" selected="selected">Select Department</option>
+        <option *ngFor="let departments of data.departments|async" value="{{departments.department_id}}">
+            {{departments.name}}
+        </option>
+      </select> 
+    
 
     <ul>
+<<<<<<< HEAD
       <li *ngFor="let employee of data.employees|async|nameFilter:filterText" (click)="onSelect(employee)">{{ employee.first_name }}</li>
+=======
+      <li *ngFor="let employee of data.employees|async|nameFilter:filterText|departmentFilter:filterDepartment" (click)="onSelect(city)">
+        {{ employee.first_name }}
+      </li>
+>>>>>>> master
     </ul>
 </div>

@@ -28,7 +28,7 @@ export class DetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subEmployee.unsubscribe();
+    // this.subEmployee.unsubscribe();
   }
 
 }

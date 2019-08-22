@@ -18,3 +18,7 @@ form input.ng-valid {
 form input.ng-invalid {
     background: pink;
 }
+
+.margin-right-10 {
+    margin-right: 10px;
+}
