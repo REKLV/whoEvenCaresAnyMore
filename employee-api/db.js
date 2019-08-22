@@ -27,6 +27,15 @@ exports.getEmployees = function(callback) {
         }
     )
 }
+exports.insertSalesEmployee = function(data, readyFn) {
+
+    var query = db.query('INSERT INTO sales_employee SET ? ', data, function(error, results, fields) {
+        if (error) throw error;
+        readyFn(results.insertId);
+    });
+
+}
+
 
 exports.insertEmployee = function(data, readyFn) {
     console.log(data.post_code);
