@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from  '@ng-bootstrap/ng-bootstrap';
 import { DistrictDirective } from './district.directive';
 import { HttpClientModule } from '@angular/common/http';
+import { DepartmentListComponent } from './department-list/department-list.component';
+import { DepartmentEmployeesComponent } from './department-employees/department-employees.component';
 // import { AddEmployeeComponent } from './add-employee/add-employee.component';
 
 @NgModule({
@@ -20,6 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     NameFilterPipe,
     // AddCityComponent,
     DistrictDirective,
+    DepartmentListComponent,
+    DepartmentEmployeesComponent,
     // AddEmployeeComponent
   ],
   imports: [
