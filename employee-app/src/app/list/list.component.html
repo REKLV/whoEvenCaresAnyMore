@@ -13,12 +13,8 @@
     
 
     <ul>
-<<<<<<< HEAD
-      <li *ngFor="let employee of data.employees|async|nameFilter:filterText" (click)="onSelect(employee)">{{ employee.first_name }}</li>
-=======
       <li *ngFor="let employee of data.employees|async|nameFilter:filterText|departmentFilter:filterDepartment" (click)="onSelect(city)">
         {{ employee.first_name }}
       </li>
->>>>>>> master
     </ul>
 </div>
