@@ -6,7 +6,6 @@ import { DetailComponent } from './detail/detail.component';
 import { ListComponent } from './list/list.component';
 import { NameFilterPipe } from './name-filter.pipe';
 import { FormsModule } from '@angular/forms';
-// import { AddCityComponent } from './add-city/add-city.component';
 import { NgbModule } from  '@ng-bootstrap/ng-bootstrap';
 import { DistrictDirective } from './district.directive';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,7 +17,6 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
     DetailComponent,
     ListComponent,
     NameFilterPipe,
-    // AddCityComponent,
     DistrictDirective,
     AddEmployeeComponent
   ],
