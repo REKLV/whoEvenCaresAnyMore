@@ -44,7 +44,6 @@ export class AddEmployeeComponent implements OnInit {
         this.validSurname = false;
       }
       console.log("The name is worng")
-      this.validName = false;
       return false;
     }
 
@@ -61,7 +60,6 @@ export class AddEmployeeComponent implements OnInit {
       this.validSurname = true;
     }
 
-    this.validName = true;
     console.log("The tname is correct");
     return true;
   }
