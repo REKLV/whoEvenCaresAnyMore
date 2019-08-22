@@ -26,6 +26,12 @@ app.post('/addemployee', function(req, res) {
     });
 });
 
+app.post('/addsalesemployee', function(req, res) {
+    db.insertSalesEmployee(req.body, function(insertedKey) {
+        res.sendStatus(200);
+    });
+});
+
 // app.get('/getemployeesbydepartment', function(req, res) {
 //     db.getEmployeesByDepartment(req.body,function(rows) {
 //         res.send(rows);
