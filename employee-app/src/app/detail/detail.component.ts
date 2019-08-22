@@ -14,11 +14,11 @@ export class DetailComponent implements OnInit, OnDestroy {
 
   switchboard: SwitchboardService;
 
-  constructor(switchboard: SwitchboardService) { 
-    this.switchboard = switchboard;  
+  constructor(switchboard: SwitchboardService) {
+    this.switchboard = switchboard;
   }
 
-  subCity: Subscription;
+  subEmployee: Subscription;
 
   ngOnInit(): void {
     this.subEmployee = this.switchboard.employee$.subscribe((e) => {
