@@ -1,17 +1,17 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { City } from './city';
+import { Employee } from './employee';
 
 @Pipe({
   name: 'nameFilter'
 })
 export class NameFilterPipe implements PipeTransform {
 
-  transform(cities: City[], filterText: string): City[] {
-      if (!cities) return [];
-      if (!filterText) return cities;
+  transform(employees: Employee[], filterText: string): Employee[] {
+      if (!employees) return [];
+      if (!filterText) return employees;
 
-      return cities.filter(c => {
-          return c.name.toLowerCase()
+      return employees.filter(c => {
+          return c.first_name.toLowerCase()
             .includes(filterText.toLowerCase());
       });
   }

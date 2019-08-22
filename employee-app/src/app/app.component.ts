@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { City } from './city';
+import { Employee } from './employee';
 import { DataService } from './data.service';
 
 @Component({
-  selector: 'city-root',
+  selector: 'employee-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 
 export class AppComponent {
-  title = 'city-app';
+  title = 'company-app';
 }
 

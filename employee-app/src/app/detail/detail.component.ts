@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { City } from '../city';
+import { Employee } from '../employee';
 import { SwitchboardService } from '../switchboard.service';
 import { Subscription } from 'rxjs';
 
@@ -10,24 +10,24 @@ import { Subscription } from 'rxjs';
 })
 export class DetailComponent implements OnInit, OnDestroy {
 
-  @Input() city: City;
+  @Input() employee: Employee;
 
   switchboard: SwitchboardService;
 
-  constructor(switchboard: SwitchboardService) { 
-    this.switchboard = switchboard;  
+  constructor(switchboard: SwitchboardService) {
+    this.switchboard = switchboard;
   }
 
-  subCity: Subscription;
+  subEmployee: Subscription;
 
   ngOnInit(): void {
-    this.subCity = this.switchboard.city$.subscribe((c) => {
-        this.city = c;
+    this.subEmployee = this.switchboard.city$.subscribe((e) => {
+        this.employee = e;
     });
   }
 
   ngOnDestroy(): void {
-    this.subCity.unsubscribe();
+    this.subEmployee.unsubscribe();
   }
 
 }

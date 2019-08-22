@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { City } from './city';
+import { Employee } from './employee';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -9,12 +9,12 @@ import { HttpClient } from '@angular/common/http';
 export class DataService {
 
   constructor(private http: HttpClient) {
-    
+
   }
 
-  cities = this.http.get<City[]>('/api/cities');
+  employees = this.http.get<Employee[]>('/api/employees');
 
-  public addCity(newCity: City): void {
-    this.cities = this.http.post<City[]>('/api/addcity', newCity);
-  }
+  // public addCity(newCity: City): void {
+  //   this.cities = this.http.post<City[]>('/api/addcity', newCity);
+  // }
 }
