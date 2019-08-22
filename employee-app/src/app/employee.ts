@@ -10,5 +10,5 @@ export class Employee {
   bank_sort_code: string;
   bank_account_no: string;
   salary: number;
-  department_id: number;
+//  department_id: number;
 }
