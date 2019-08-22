@@ -11,6 +11,7 @@
         <div> <input [(ngModel)]="newEmployee.email" required name="email" placeholder="Email"/> </div>
         <div> <input [(ngModel)]="newEmployee.nin" required name="nin" placeholder="National Insurance Number"/> </div>
         <div> <input [(ngModel)]="newEmployee.bank_sort_code" required name="bank_sort_code" placeholder="Bank Sort Code"/> </div>
+        <div> <input [(ngModel)]="newEmployee.bank_account_no" required name="bank_account_no" placeholder="Bank Account Number"/> </div>
         <div> <input [(ngModel)]="newEmployee.salary" required name="salary" type="number" placeholder="Salary"/> </div>
         <div> <select (change)="($event.target.value)">
             <option value="0">Select Department</option>
@@ -34,6 +35,7 @@
         <div *ngIf="addForm.hasError('required', 'email')">Email Address is required</div>
         <div *ngIf="addForm.hasError('required', 'nin')">National Insurance Number is required</div>
         <div *ngIf="addForm.hasError('required', 'bank_sort_code')">Bank Sort Code is required</div>
+        <div *ngIf="addForm.hasError('required', 'bank_account_number')">Bank Account Number is required</div>
         <div *ngIf="addForm.hasError('required', 'salary')">Salary is required</div>
      <!--   <div *ngIf="addForm.hasError('required', 'department_id')">Department is required</div> -->
 
