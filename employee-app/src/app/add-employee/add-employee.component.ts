@@ -81,7 +81,7 @@ export class AddEmployeeComponent implements OnInit {
   checkPostCode(passedPostCode: string): boolean
   {
     passedPostCode = this.removeEmptySpace(passedPostCode);
-    var regexPostCode = /^[A-Z]{1,2}[0-9]{1,2} ?[0-9][A-Z]{2}$/i;
+    var regexPostCode = /([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})/;
 
     if(typeof passedPostCode != "string" || regexPostCode.test(passedPostCode) == false)
     {
@@ -111,7 +111,7 @@ export class AddEmployeeComponent implements OnInit {
 
   checkNan(passedNan: string): boolean
   {
-    var regexNan = /^(?!BG)(?!GB)(?!NK)(?!KN)(?!TN)(?!NT)(?!ZZ)(?:[A-CEGHJ-PR-TW-Z][A-CEGHJ-NPR-TW-Z])(?:\s*\d\s*){6}([A-D]|\s)$/;
+    var regexNan = /^[A-CEGHJ-PR-TW-Z]{1}[A-CEGHJ-NPR-TW-Z]{1}[0-9]{6}[A-DFM]{0,1}$/;
 
     passedNan = this.removeEmptySpace(passedNan);
 
