@@ -1,7 +1,10 @@
 const express = require('express');
 const cors = require('cors')
+const bodyParser = require('body-parser');
 const app = express();
 const db = require('./db.js');
+
+app.use(bodyParser.urlencoded())
 
 app.use(express.json());
 app.use(cors());
@@ -17,9 +20,14 @@ var authMiddleware = function (req, res, next) {
 
 // app.use(authMiddleware);
 
+app.post('/addemployee', function(req, res) {
+    db.insertEmployee(req.body, function(insertedKey) {
+        res.sendStatus(200);
+    });
+});
+
 app.get('/employees', function(req, res) {
     db.getEmployees(function(rows) {
-        console.log('dsfdsf');
         res.send(rows);
     })
 });
