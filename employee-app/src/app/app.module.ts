@@ -12,6 +12,7 @@ import { DistrictDirective } from './district.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { DepartmentListComponent } from './department-list/department-list.component';
 import { DepartmentEmployeesComponent } from './department-employees/department-employees.component';
+import { DepartmentFilterPipe } from './department-filter.pipe';
 // import { AddEmployeeComponent } from './add-employee/add-employee.component';
 
 @NgModule({
@@ -24,6 +25,7 @@ import { DepartmentEmployeesComponent } from './department-employees/department-
     DistrictDirective,
     DepartmentListComponent,
     DepartmentEmployeesComponent,
+    DepartmentFilterPipe,
     // AddEmployeeComponent
   ],
   imports: [
