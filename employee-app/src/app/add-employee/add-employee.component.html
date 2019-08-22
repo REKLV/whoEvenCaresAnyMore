@@ -3,6 +3,7 @@
     <fieldset>
         <legend>Add Employee</legend>
 
+        <p *ngif="validName">Please enter only characters </p>
         <div> <input [(ngModel)]="newEmployee.first_name" required name="first_name" placeholder="First name"/> </div>
         <div> <input [(ngModel)]="newEmployee.middle_name" name="middle_name" placeholder="Middle name"/> </div>
         <div> <input [(ngModel)]="newEmployee.last_name" required name="last_name" placeholder="Last name"/> </div>
