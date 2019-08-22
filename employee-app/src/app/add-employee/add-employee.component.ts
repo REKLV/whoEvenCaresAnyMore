@@ -142,10 +142,10 @@ export class AddEmployeeComponent implements OnInit {
     passedAccountNum = this.removeEmptySpace(passedAccountNum)
     if(typeof passedAccountNum != "string" || passedAccountNum == null || this.checkIfContainsOnlyNum(passedAccountNum) == false || passedAccountNum.length != 8)
     {
-      this.validSortCode = false;
+      this.validAccountNum = false;
       return false
     }
-    this.validSortCode = true;
+    this.validAccountNum = true;
     return true;
 
   }
