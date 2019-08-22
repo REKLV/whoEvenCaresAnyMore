@@ -14,7 +14,7 @@ export class DataService {
 
   employees = this.http.get<Employee[]>('/api/employees');
 
-  // public addCity(newCity: City): void {
-  //   this.cities = this.http.post<City[]>('/api/addcity', newCity);
-  // }
+  public addCity(newEmployee: Employee): void {
+    this.http.post<Employee[]>('/api/addcity', newCity).subscribe();
+  }
 }
