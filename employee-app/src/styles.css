@@ -22,3 +22,7 @@ form input.ng-invalid {
 .margin-right-10 {
     margin-right: 10px;
 }
+
+.page-title {
+    margin-top: 20px;
+}
