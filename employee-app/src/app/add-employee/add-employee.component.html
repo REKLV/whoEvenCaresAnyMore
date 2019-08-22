@@ -1,0 +1,38 @@
+<form (ngSubmit)="addEmployee(addForm)" #addForm="ngForm">
+
+    <fieldset>
+        <legend>Add Employee</legend>
+
+        <div> <input [(ngModel)]="newEmployee.first_name" required name="first_name" placeholder="First name"/> </div>
+        <div> <input [(ngModel)]="newEmployee.middle_name" name="middle_name" placeholder="Middle name"/> </div>
+        <div> <input [(ngModel)]="newEmployee.last_name" required name="last_name" placeholder="Last name"/> </div>
+        <div> <input [(ngModel)]="newEmployee.address_line" required name="address_line" placeholder="Address Line"/> </div>
+        <div> <input [(ngModel)]="newEmployee.post_code" required name="postcode" placeholder="Postcode"/> </div>
+        <div> <input [(ngModel)]="newEmployee.email" required name="email" placeholder="Email"/> </div>
+        <div> <input [(ngModel)]="newEmployee.nin" required name="nin" placeholder="National Insurance Number"/> </div>
+        <div> <input [(ngModel)]="newEmployee.bank_sort_code" required name="bank_sort_code" placeholder="Bank Sort Code"/> </div>
+        <div> <input [(ngModel)]="newEmployee.bank_account_no" required name="bank_account_no" placeholder="Bank Account Number"/> </div>
+        <div> <input [(ngModel)]="newEmployee.salary" required name="salary" type="number" placeholder="Salary"/> </div>
+        <div> <select [(ngModel)]="newEmployee.department_id" required name="department_id">
+            <option value="-1">Select Department</option>
+            <option *ngFor="let departments of data.departments|async" value="{{departments.department_id}}">
+                {{departments.name}}
+            </option>
+        </select> </div>
+
+        <input type="submit" [disabled]="!addForm.valid"/>
+
+        <div *ngIf="addForm.hasError('required', 'first_name')">First name is required</div>
+        <div *ngIf="addForm.hasError('required', 'last_name')">Last name is required</div>
+        <div *ngIf="addForm.hasError('required', 'address_line')">Address line is required</div>
+        <div *ngIf="addForm.hasError('required', 'postcode')">Postcode is required</div>
+        <div *ngIf="addForm.hasError('required', 'email')">Email Address is required</div>
+        <div *ngIf="addForm.hasError('required', 'nin')">National Insurance Number is required</div>
+        <div *ngIf="addForm.hasError('required', 'bank_sort_code')">Bank Sort Code is required</div>
+        <div *ngIf="addForm.hasError('required', 'bank_account_number')">Bank Account Number is required</div>
+        <div *ngIf="addForm.hasError('required', 'salary')">Salary is required</div>
+       <div *ngIf="addForm.hasError('required', 'department_id')">Department is required</div>
+
+    </fieldset>
+
+</form>

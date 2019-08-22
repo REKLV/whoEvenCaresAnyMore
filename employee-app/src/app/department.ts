@@ -1,4 +1,4 @@
 export class Department {
-  department_id: number;
-  name: string
+    department_id : number;
+    name : string;
 }

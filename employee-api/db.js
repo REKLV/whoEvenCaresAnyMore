@@ -2,9 +2,10 @@ const mysql = require('mysql');
 
 const db = mysql.createConnection({
     host: 'localhost',
-    user: 'bob',
-    password: 'bob~Pwd!',
-    database: 'employee_db'
+    user: 'employee',
+    password: 'password',
+    database: 'employees'
+
 })
 
 db.connect(function(err) {
@@ -39,6 +40,15 @@ exports.insertEmployee = function(data, readyFn) {
 
 exports.getAllDepartments = function(callback) {
     db.query("SELECT name, department_id FROM department", 
+        function (err, rows) {
+            if (err) throw err;
+            callback(rows);
+        }
+    )
+}
+
+exports.getDepartmentbyID = function(id, callback) {
+    db.query("SELECT * FROM department WHERE department_id = ?", id,
         function (err, rows) {
             if (err) throw err;
             callback(rows);

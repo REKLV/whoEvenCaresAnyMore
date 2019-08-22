@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Employee } from '../employee';
 import { SwitchboardService } from '../switchboard.service';
 import { Subscription } from 'rxjs';
+import { DataService} from '../data.service';
 
 @Component({
   selector: 'employee-detail',
@@ -21,9 +22,9 @@ export class DetailComponent implements OnInit, OnDestroy {
   subEmployee: Subscription;
 
   ngOnInit(): void {
-    // this.subEmployee = this.switchboard.employee$.subscribe((e) => {
-    //     this.employee = e;
-    // });
+    this.subEmployee = this.switchboard.employee$.subscribe((e) => {
+         this.employee = e;
+    });
   }
 
   ngOnDestroy(): void {

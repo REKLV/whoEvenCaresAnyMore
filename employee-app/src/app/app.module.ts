@@ -6,14 +6,13 @@ import { DetailComponent } from './detail/detail.component';
 import { ListComponent } from './list/list.component';
 import { NameFilterPipe } from './name-filter.pipe';
 import { FormsModule } from '@angular/forms';
-// import { AddCityComponent } from './add-city/add-city.component';
 import { NgbModule } from  '@ng-bootstrap/ng-bootstrap';
 import { DistrictDirective } from './district.directive';
 import { HttpClientModule } from '@angular/common/http';
+import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { DepartmentListComponent } from './department-list/department-list.component';
 import { DepartmentEmployeesComponent } from './department-employees/department-employees.component';
 import { DepartmentFilterPipe } from './department-filter.pipe';
-// import { AddEmployeeComponent } from './add-employee/add-employee.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +20,11 @@ import { DepartmentFilterPipe } from './department-filter.pipe';
     DetailComponent,
     ListComponent,
     NameFilterPipe,
-    // AddCityComponent,
     DistrictDirective,
+    AddEmployeeComponent,
     DepartmentListComponent,
     DepartmentEmployeesComponent,
-    DepartmentFilterPipe,
-    // AddEmployeeComponent
+    DepartmentFilterPipe
   ],
   imports: [
     BrowserModule,
