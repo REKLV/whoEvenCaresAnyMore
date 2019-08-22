@@ -2,9 +2,9 @@ const mysql = require('mysql');
 
 const db = mysql.createConnection({
     host: 'localhost',
-    user: 'employee',
-    password: 'password',
-    database: 'employees'
+    user: 'bob',
+    password: 'bob~Pwd!',
+    database: 'employee_db'
 
 })
 
@@ -16,8 +16,11 @@ db.connect(function(err) {
     console.log('Connected to mysql');
 })
 
+//SELECT employee_id, first_name, middle_name, last_name, address_line, post_code, email, nin, bank_sort_code, bank_account_no, salary, employee.department_id, department.name FROM employee inner join department on department.department_id=employee.department_id 
+
+//SELECT employee_id, first_name, middle_name, last_name, address_line, post_code, email, nin, bank_sort_code, bank_account_no, salary, department_id FROM employee
 exports.getEmployees = function(callback) {
-    db.query("SELECT employee_id, first_name, middle_name, last_name, address_line, post_code, email, nin, bank_sort_code, bank_account_no, salary, department_id FROM employee", 
+    db.query("SELECT employee_id, first_name, middle_name, last_name, address_line, post_code, email, nin, bank_sort_code, bank_account_no, salary, employee.department_id, department.name FROM employee inner join department on department.department_id=employee.department_id ", 
         function (err, rows) {
             if (err) throw err;
             callback(rows);
