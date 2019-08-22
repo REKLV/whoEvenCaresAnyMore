@@ -57,8 +57,9 @@ exports.getAllDepartments = function(callback) {
 
 
 exports.getEmployeesByDepartment = function(depId, callback) {
-   var q= db.query(" select employee_id, first_name, middle_name, last_name, address_line, post_code, email, nin, bank_sort_code, bank_account_no, salary, department_id FROM employee WHERE department_id = ?", [depId], 
-  
+   //var q= db.query(" select employee_id, first_name, middle_name, last_name, address_line, post_code, email, nin, bank_sort_code, bank_account_no, salary, department_id FROM employee WHERE department_id = ?", [depId], 
+   var q= db.query("select employee_id, first_name, middle_name, last_name, address_line, post_code, email, nin, bank_sort_code, bank_account_no, salary, employee.department_id, department.name FROM employee inner join department on employee.department_id=department.department_id WHERE employee.department_id = ? ", [depId], 
+
    function (err, rows) {
     console.log(JSON.stringify(depId));
     console.log(q.sql)
