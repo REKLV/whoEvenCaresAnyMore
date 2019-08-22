@@ -25,10 +25,16 @@ exports.getEmployees = function(callback) {
 }
 
 exports.insertEmployee = function(data, readyFn) {
+    console.log(data.post_code);
+    
+    if (/([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})/.test(data.post_code)){
     var query = db.query('INSERT INTO employee SET ? ', data, function(error, results, fields) {
         if (error) throw error;
         readyFn(results.insertId);
     });
+} else {
+    console.log("Invalid uk postcode")
+}
 }
 
 exports.getAllDepartments = function(callback) {
