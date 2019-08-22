@@ -1,0 +1,22 @@
+<form (ngSubmit)="addCity(addForm)" #addForm="ngForm">
+
+    <fieldset>
+        <legend>Add City</legend>
+
+        <div> <input [(ngModel)]="newCity.name" required name="cityname" placeholder="Name"/> </div>
+        <div> <input [(ngModel)]="newCity.countrycode" required name="countrycode" pattern="^GBR$|^IRL$" placeholder="Country code"/> </div>
+        <div> <input [(ngModel)]="newCity.district" required name="district" cityDistrict placeholder="District"/> </div>
+        <div> <input [(ngModel)]="newCity.population" required name="population" type="number" placeholder="Population"/> </div>
+
+        <input type="submit" [disabled]="!addForm.valid"/>
+
+        <div *ngIf="addForm.hasError('required', 'cityname')">City name is required</div>
+        <div *ngIf="addForm.hasError('required', 'countrycode')">Country Code is required</div>
+        <div *ngIf="addForm.hasError('pattern', 'countrycode')">Country Code must be GBR or IRL</div>
+        <div *ngIf="addForm.hasError('required', 'district')">District is required</div>
+        <div *ngIf="addForm.hasError('required', 'population')">Population is required</div>
+        <div *ngIf="addForm.hasError('nosuchdistrict', 'district')">District is not in the valid list</div>
+
+    </fieldset>
+
+</form>

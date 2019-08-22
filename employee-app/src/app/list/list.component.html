@@ -1,0 +1,9 @@
+<div class="list">
+    <h2>List</h2>
+  
+    <input [(ngModel)]="filterText" placeholder="Filter"/>
+
+    <ul>
+      <li *ngFor="let city of data.cities|async|nameFilter:filterText" (click)="onSelect(city)">{{ city.name }}</li>
+    </ul>
+</div>
