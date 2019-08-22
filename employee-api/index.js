@@ -42,7 +42,13 @@ app.get('/getemployeesbydepartment', function(req, res) {
     
     db.getEmployeesByDepartment(req.query.id , function(rows) {
         console.log("hbi" + JSON.stringify(req.query.id))
-        res.send(rows[0]);        
+        res.send(rows);        
+    })
+});
+
+app.get('/getalldepartments', function(req, res) {
+    db.getAllDepartments(function(rows) {
+        res.send(rows);
     })
 });
 

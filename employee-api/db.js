@@ -31,6 +31,15 @@ exports.insertEmployee = function(data, readyFn) {
     });
 }
 
+exports.getAllDepartments = function(callback) {
+    db.query("SELECT name, department_id FROM department", 
+        function (err, rows) {
+            if (err) throw err;
+            callback(rows);
+        }
+    )
+}
+
 // exports.getEmployeesByDepartment = function(callback) {
 //     db.query("SELECT employee_id, first_name, middle_name, last_name, address_line, post_code, email, nin, bank_sort_code, bank_account_no, salary, department_id FROM employee where department_id=  '1'" , 
 //         function (err, rows) {
