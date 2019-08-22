@@ -26,9 +26,23 @@ app.post('/addemployee', function(req, res) {
     });
 });
 
+// app.get('/getemployeesbydepartment', function(req, res) {
+//     db.getEmployeesByDepartment(req.body,function(rows) {
+//         res.send(rows);
+//     })
+// });
+
 app.get('/employees', function(req, res) {
     db.getEmployees(function(rows) {
         res.send(rows);
+    })
+});
+
+app.get('/getemployeesbydepartment', function(req, res) {
+    
+    db.getEmployeesByDepartment(req.query.id , function(rows) {
+        console.log("hbi" + JSON.stringify(req.query.id))
+        res.send(rows[0]);        
     })
 });
 
