@@ -2,3 +2,13 @@
 {
     color: red;
 }
+
+form input.ng-valid 
+{
+    background: white !important;
+}
+
+form input.ng-invalid 
+{
+    background: white !important;
+}
